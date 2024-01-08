@@ -1,4 +1,4 @@
-﻿using TeamServer.Models;
+﻿using TeamServer.Models.Listeners;
 
 namespace TeamServer.Services
 {

@@ -1,4 +1,4 @@
-﻿namespace TeamServer.Models
+﻿namespace TeamServer.Models.Listeners
 {
     public class HttpListener : Listener
     {
@@ -34,6 +34,7 @@
         private void ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddControllers(); //????
+            serviceCollection.AddSingleton(AgentService);
         }
 
         private void ConfigureApp(IApplicationBuilder app)

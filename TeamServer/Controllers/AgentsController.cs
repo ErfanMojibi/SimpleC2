@@ -25,7 +25,7 @@ namespace TeamServer.Controllers
             return Ok(agents);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("{agentId}")]
         public IActionResult GetAgent(string agentId)
         {
             var agent = _agents.GetAgent(agentId);
@@ -34,7 +34,7 @@ namespace TeamServer.Controllers
             return Ok(agent);
         }
 
-        [HttpGet("{agentId}/tasks/{taskId}")]
+        [HttpGet("{agentId}/tasks/{taskId}/result")]
         public IActionResult GetAgentTaskResult(string agentId, string taskId)
         {
             var agent = _agents.GetAgent(agentId);
@@ -48,18 +48,18 @@ namespace TeamServer.Controllers
         }
 
         [HttpGet("{agentId}/tasks/")]
-        public IActionResult GetAgentAllTaskResuls(string agentId)
+        public IActionResult GetAgentAllTask(string agentId)
         {
             var agent = _agents.GetAgent(agentId);
             if (agent is null)
                 return NotFound("Agent not found");
 
-            return Ok(taskResults);
+            return Ok(agent.GetPendingTasks());
         }
 
 
 
-        [HttpPost("{agentId")]
+        [HttpPost("{agentId}")]
         public IActionResult TaskAgent(string agentId, [FromBody] TaskAgentRequest taskAgentRequest)
         {
             var agent = _agents.GetAgent(agentId);
@@ -76,7 +76,7 @@ namespace TeamServer.Controllers
 
             agent.QueueTask(task);
             var root = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.Path}";
-            var path = $"{root}/{task.Id}";
+            var path = $"{root}/tasks/{task.Id}";
 
             return Created(path, task);
 

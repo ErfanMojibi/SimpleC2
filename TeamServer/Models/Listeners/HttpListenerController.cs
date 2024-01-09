@@ -1,11 +1,11 @@
 ﻿
-using System.Text;
-using System.Text.Json.Serialization;
+
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TeamServer.Models.Agents;
 using TeamServer.Services;
-using JsonConverter = System.Text.Json.Serialization.JsonConverter;
+
+using System.Text;
 
 namespace TeamServer.Models.Listeners
 {
@@ -43,8 +43,8 @@ namespace TeamServer.Models.Listeners
                     json = await sr.ReadToEndAsync();
                 }
 
-                var result = JsonConvert.DeserializeObject<IEnumerable<AgentTaskResult>>(json);
-                agent.AddTaskResults(result);
+                var results = JsonConvert.DeserializeObject<IEnumerable<AgentTaskResult>>(json);
+                agent.AddTaskResults(results);
             }
             
             
@@ -64,8 +64,18 @@ namespace TeamServer.Models.Listeners
 
             // Authorization: Bearer base64
             encodedMetadata = encodedMetadata.ToString().Remove(0, 7);
-            var json = Encoding.UTF8.GetString(Convert.FromBase64String(encodedMetadata));
-            return JsonConvert.DeserializeObject<AgentMetadata>(json);
+            try
+            {
+                byte[] arr = Convert.FromBase64String(encodedMetadata);
+
+                var json = Encoding.UTF8.GetString(arr);
+                return JsonConvert.DeserializeObject<AgentMetadata>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
         }
 
     }

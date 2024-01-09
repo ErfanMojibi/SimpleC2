@@ -57,7 +57,7 @@ namespace Agent
         {
             GenerateMetadata();
             LoadAgentCommands();
-            _commModule = new HttpCommModule("localhost", 8080);
+            _commModule = new HttpCommModule("localhost", 9000);
             _commModule.Init(_metadata);
             _commModule.Start();
 

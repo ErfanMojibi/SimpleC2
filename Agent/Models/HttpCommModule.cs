@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Agent.Models
 {
-    internal class HttpCommModule : CommModule
+    public class HttpCommModule : CommModule
     {
         public string ConnectAddress { get; set; }
         public int ConnectPort { get; set; }
@@ -25,8 +26,8 @@ namespace Agent.Models
             _httpClient.DefaultRequestHeaders.Clear();
 
             var encoded = Convert.ToBase64String(Metadata.Serialize());
-            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer ${encoded}");
-
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {encoded}");
+            _httpClient.Timeout = TimeSpan.FromMinutes(3);
         }
 
         public HttpCommModule(string connectAddress, int connectPort)
@@ -74,8 +75,16 @@ namespace Agent.Models
 
         public async Task CheckIn()
         {
-            var response = await _httpClient.GetByteArrayAsync("/");
-            HandleResponse(response);
+            try
+            {
+                var response = await _httpClient.GetByteArrayAsync("/");
+                Console.WriteLine($"response: {response}");
+                HandleResponse(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
         }
 
         private void HandleResponse(byte[] response)

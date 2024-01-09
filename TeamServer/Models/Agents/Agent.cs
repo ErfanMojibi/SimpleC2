@@ -36,14 +36,20 @@ namespace TeamServer.Models.Agents
             _pendingTasks.Enqueue(task);
         }
 
-        public AgentTaskResult GetTaskResult(string id)
+        public AgentTaskResult? GetTaskResult(string id)
         {
-            
+            return GetAllAgentTaskResults().FirstOrDefault(r => r.Id.Equals(id));
+
         }
 
         public IEnumerable<AgentTaskResult> GetAllAgentTaskResults()
         {
             return _taskResults;
+        }
+
+        public void AddTaskResults(IEnumerable<AgentTaskResult> results)
+        {
+            _taskResults.AddRange(results);
         }
 
 

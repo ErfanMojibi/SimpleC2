@@ -57,7 +57,15 @@ namespace TeamServer.Controllers
             return Ok(agent.GetPendingTasks());
         }
 
+        [HttpGet("{agentId}/tasks/result")]
+        public IActionResult GetAgentAllTaskResults(string agentId)
+        {
+            var agent = _agents.GetAgent(agentId);
+            if (agent is null)
+                return NotFound("Agent not found");
 
+            return Ok(agent.GetAllAgentTaskResults());
+        }
 
         [HttpPost("{agentId}")]
         public IActionResult TaskAgent(string agentId, [FromBody] TaskAgentRequest taskAgentRequest)

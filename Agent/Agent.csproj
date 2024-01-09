@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\ChangeDirectory.cs" />
+    <Compile Include="Commands\ListDirectory.cs" />
+    <Compile Include="Commands\MakeDirectory.cs" />
     <Compile Include="Commands\PrintWorkingDirectory.cs" />
+    <Compile Include="Commands\RemoveDirectory.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Models\AgentMetadata.cs" />
     <Compile Include="Models\AgentTask.cs" />

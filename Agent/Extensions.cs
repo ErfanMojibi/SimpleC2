@@ -22,7 +22,7 @@ namespace Agent
         public static T Deserialize<T>(this byte[] data)
         {
             var deserializer = new DataContractJsonSerializer(typeof(T));
-            using (var ms = new MemoryStream())
+            using (var ms = new MemoryStream(data))
             {
                 return (T) deserializer.ReadObject(ms);
             }

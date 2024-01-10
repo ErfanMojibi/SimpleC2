@@ -18,7 +18,7 @@ namespace Agent.Commands
         {
             var processes = Process.GetProcesses();
             StringBuilder result = new StringBuilder();
-            result.AppendLine($"{"ProcessName",-20}\t{"PID",-20}\t{"SessionId",-20}\t{"Owner", -20}\t{"Arch", -5}\t{"Path, -60"}");
+            result.AppendLine($"{"ProcessName",-20}\t{"PID",-20}\t{"SessionId",-20}\t{"Owner", -20}\t{"Arch", -5}\t{"Path", -40}");
             foreach (Process p in processes)
             {
                 result.AppendLine($"{p.ProcessName,-20}\t {p.Id, -20}\t{p.SessionId,-20}\t{GetProcessOwner(p)}\t{GetProcessArch(p)}\t{GetProcessPath(p), -60}");
@@ -87,4 +87,4 @@ namespace Agent.Commands
 
 
 }
-}
+

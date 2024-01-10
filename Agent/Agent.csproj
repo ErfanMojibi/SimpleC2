@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\ChangeDirectory.cs" />
+    <Compile Include="Commands\ExecuteAssembly.cs" />
     <Compile Include="Commands\ListDirectory.cs" />
     <Compile Include="Commands\ListProcesses.cs" />
     <Compile Include="Commands\MakeDirectory.cs" />

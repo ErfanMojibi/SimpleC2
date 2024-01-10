@@ -55,6 +55,7 @@
     <Compile Include="Commands\RevToSelf.cs" />
     <Compile Include="Commands\Run.cs" />
     <Compile Include="Commands\Shell.cs" />
+    <Compile Include="Commands\StealToken.cs" />
     <Compile Include="Commands\WhoAmI.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Models\AgentMetadata.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Models\CommModule.cs" />
     <Compile Include="Models\HttpCommModule.cs" />
     <Compile Include="Native\Advapi.cs" />
+    <Compile Include="Native\Kernel32.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Execute.cs" />

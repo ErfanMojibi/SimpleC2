@@ -71,6 +71,8 @@ namespace Agent.Utils
             Console.SetOut(currOut);
             Console.SetError(currErr);
 
+            sw.Dispose();
+            ms.Dispose();
             return output;
         }
     }

@@ -8,7 +8,7 @@ using Agent.Models;
 
 namespace Agent.Commands
 {
-    internal class MakeDirectory : AgentCommand
+    public class MakeDirectory : AgentCommand
     {
         public override string Name => "mkdir";
         public override string Execute(AgentTask task)

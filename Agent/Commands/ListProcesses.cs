@@ -16,10 +16,10 @@ namespace Agent.Commands
         {
             var processes = Process.GetProcesses();
             StringBuilder result = new StringBuilder();
-            result.AppendLine($"{"ProcessName",-20}\t{"PID",-20}\t{"SessionId",-20}");
+            result.AppendLine($"{"ProcessName",-20}\t{"PID",-20}\t{"SessionId",-20}\t{"Path, -60"}");
             foreach (Process p in processes)
             {
-                result.AppendLine($"{p.ProcessName,-20}\t {p.Id, -20}\t{p.SessionId,-20}\t{GetProcessPath(p), -30}");
+                result.AppendLine($"{p.ProcessName,-20}\t {p.Id, -20}\t{p.SessionId,-20}\t{GetProcessPath(p), -60}");
             }
 
             return result.ToString();
@@ -33,7 +33,7 @@ namespace Agent.Commands
             }
             catch (Exception ex)
             {
-                return "";
+                return "-";
             }
         }
 

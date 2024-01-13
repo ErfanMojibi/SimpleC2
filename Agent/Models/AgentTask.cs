@@ -13,7 +13,7 @@ namespace Agent.Models
         [DataMember(Name="arguments")]
         public string[] Arguments { get; set; }
         [DataMember(Name="file")]
-        public string File { get; }
+        public string File { get; set; }
 
         public byte[] FileBytes
         {

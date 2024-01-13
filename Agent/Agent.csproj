@@ -55,9 +55,11 @@
     <Compile Include="Commands\RevToSelf.cs" />
     <Compile Include="Commands\Run.cs" />
     <Compile Include="Commands\Shell.cs" />
+    <Compile Include="Commands\ShellcodeInject.cs" />
     <Compile Include="Commands\StealToken.cs" />
     <Compile Include="Commands\WhoAmI.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Internal\Injector.cs" />
     <Compile Include="Models\AgentMetadata.cs" />
     <Compile Include="Models\AgentTask.cs" />
     <Compile Include="Models\AgentTaskResult.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Execute.cs" />
+    <Compile Include="Internal\SelfInjector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
